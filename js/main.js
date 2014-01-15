@@ -1,14 +1,14 @@
-player1 = "X";
-player2 = "O";
+PLAYER_1 = "RED";
+PLAYER_2 = "GREEN";
 
-current_player = player1;
+CURRENT_PLAYER = PLAYER_1;
 
 function switch_player() {
     //swicth back and forth
-    if (current_player == player1) {
-        current_player = player2;
+    if (CURRENT_PLAYER == PLAYER_1) {
+        CURRENT_PLAYER = PLAYER_2;
     } else {
-        current_player = player1;
+        CURRENT_PLAYER = PLAYER_1;
     }
 }
 
@@ -23,11 +23,11 @@ function is_valid_move(player, cell) {
 function cell_is_owned(cell) {
 
     //if x owns it, it is owned indeed
-    if ($(cell).hasClass("owned-by-X")) {
+    if ($(cell).hasClass("owned-by-" + PLAYER_1)) {
         return true;
     }
     //if Y owns it, it is owned as well
-    else if ($(cell).hasClass("owned-by-O")) {
+    else if ($(cell).hasClass("owned-by-" + PLAYER_2)) {
         return true;
     }
 
@@ -44,40 +44,83 @@ function mark_cell(player, cell) {
     $(cell).addClass(class_name);
 }
 
+
+function reset() {
+    $("div").removeClass("owned-by-" + PLAYER_1);
+    $("div").removeClass("owned-by-" + PLAYER_2);
+}
+
+
+function check_for_draw() {
+    num_owned_1 = $(".owned-by-" + PLAYER_1).length;
+    num_owned_2 = $(".owned-by-" + PLAYER_2).length;
+    if (num_owned_1 + num_owned_2 == 9) {
+        return true;
+    }
+    return false;
+}
+
+
+
 function make_move(player, cell) {
     if (is_valid_move(player, cell) == false) {
         return false;
     }
+
     mark_cell(player, cell);
+
+    winner = get_winning_player();
+    if (winner) {
+        congratulate_winner(winner);
+        reset();
+    }
+
+    if (check_for_draw()) {
+        alert("It's a draw!");
+        reset();
+    }
+
     switch_player();
     return true;
 }
 
 function get_winning_player() {
+    var player_class = "owned-by-" + CURRENT_PLAYER;
+
+    var grid = [];
+    for (var i = 0; i < 9; i++) {
+        var cell_state = $("#" + i).hasClass(player_class);
+        grid.push(cell_state);
+    }
+
+    if (grid[0] && grid[1] && grid[2] ||
+        grid[3] && grid[4] && grid[5] ||
+        grid[6] && grid[7] && grid[8] ||
+        grid[0] && grid[4] && grid[8] ||
+        grid[2] && grid[4] && grid[6] ||
+        grid[0] && grid[3] && grid[6] ||
+        grid[1] && grid[4] && grid[7] ||
+        grid[2] && grid[5] && grid[8]
+    ) {
+        return CURRENT_PLAYER;
+    }
+
     return false;
 }
 
 function congratulate_winner() {
-    alert("Thomas Wins!")
+    alert("Player " + CURRENT_PLAYER + " Wins!")
 }
 
 function show_invalid_move_message() {
     alert("Invalid move");
 }
 
-$("#tictactoe .row div").on("click", function () {
+$(".game-cell").on("click", function () {
     var cell = this;
-    if (make_move(current_player, cell) == false) {
+    if (make_move(CURRENT_PLAYER, cell) == false) {
         //we should let them know they cant do that!
         show_invalid_move_message();
-    }
-
-    winner = get_winning_player();
-    if (winner) {
-        congratulate_winner(winner);
-        // maybe reset the game, at this point or let the 
-        // user decide if they want to play another game as 
-        // part of the congratulation?!
     }
 
 });
@@ -87,8 +130,8 @@ $("#tictactoe .row div").on("click", function () {
 
 // this is just to make the boxes square 
 // (equal height to width)
-$("#tictactoe .row div").each(function (index) {
+$(".game-cell").each(function (index) {
     var cell = $(this);
-    cell.text(index);
+    //cell.text(index);
     cell.height(cell.width());
 });

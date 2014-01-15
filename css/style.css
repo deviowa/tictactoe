@@ -14,6 +14,12 @@ div.owned-by-X {
 div.owned-by-O {
     background-color: #0f0;
 }
+div.owned-by-RED {
+    background-color: #f00;
+}
+div.owned-by-GREEN {
+    background-color: #0f0;
+}
 div.marked {
     border: 0;
     width: 100%;
