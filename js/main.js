@@ -12,9 +12,28 @@ function switch_player() {
     }
 }
 
-function is_valid_move() {
-    //probably not 100% correct ?!
+function is_valid_move(player, cell) {
+    if (cell_is_owned(cell)) {
+        return false;
+    }
     return true;
+}
+
+
+function cell_is_owned(cell) {
+
+    //if x owns it, it is owned indeed
+    if ($(cell).hasClass("owned-by-X")) {
+        return true;
+    //if Y owns it, it is owned as well
+    else if ($(cell).hasClass("owned-by-O")) {
+        return true;
+
+    //otherwise no one owns it yet
+    else {
+        return false;
+    }
+
 }
 
 function mark_cell(player, cell) {
