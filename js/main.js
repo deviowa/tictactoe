@@ -25,9 +25,11 @@ function cell_is_owned(cell) {
     //if x owns it, it is owned indeed
     if ($(cell).hasClass("owned-by-X")) {
         return true;
+    }
     //if Y owns it, it is owned as well
     else if ($(cell).hasClass("owned-by-O")) {
         return true;
+    }
 
     //otherwise no one owns it yet
     else {
@@ -60,7 +62,6 @@ function congratulate_winner() {
 }
 
 function show_invalid_move_message() {
-    alert("good job!");
     alert("Invalid move");
 }
 
