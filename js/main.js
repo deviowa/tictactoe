@@ -4,12 +4,11 @@ player2 = "O";
 current_player = player1;
 
 function switch_player() {
-    // this should mae for some interresting 
-    // game dynamics...
-    if (Math.random() < 0.5) {
-        current_player = player1;
-    } else {
+    //swicth back and forth
+    if (current_player == player1) {
         current_player = player2;
+    } else {
+        current_player = player1;
     }
 }
 
