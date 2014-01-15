@@ -41,7 +41,7 @@ function congratulate_winner() {
 }
 
 function show_invalid_move_message() {
-    alert("good job!");
+    alert("Invalid move");
 }
 
 $("#tictactoe .row div").on("click", function () {
