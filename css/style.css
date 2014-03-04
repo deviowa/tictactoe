@@ -9,16 +9,16 @@ div.game-cell {
     padding: 0;
 }
 div.owned-by-X {
-    background-color: #f00;
+    background: url(/tictactoeX.png) no-repeat center;
 }
 div.owned-by-O {
-    background-color: #0f0;
+    background: url(/tictactoeO.png) no-repeat center;
 }
 div.owned-by-RED {
-    background-color: #f00;
+    background: url(/tictactoeX.png) no-repeat center;
 }
 div.owned-by-GREEN {
-    background-color: #0f0;
+    background: url(/tictactoeO.png) no-repeat center;
 }
 div.marked {
     border: 0;
