@@ -2,7 +2,7 @@
 A Tic Tac Toe Game created with Javascript.
 
 ## How to get it:
-download here[https://github.com/deviowa/tictactoe/archive/master.zip] 
+download [here|https://github.com/deviowa/tictactoe/archive/master.zip] 
 
 or clone the repository:
 ```
@@ -21,4 +21,4 @@ cd tictactoe
 python -m SimpleHTTPServer
 ```
 
-then open your browser and enter localhost:8000 in the URL field to load http://localhost:8000 and play tic tac toe.
+then open your browser and enter `localhost:8000` in the URL field to load `http://localhost:8000` and play tic tac toe.
