@@ -1,8 +1,8 @@
 # tictactoe
-A Tic Tac Toe Game created with Javascript.
+A Tic Tac Toe Game created with Javascript.  There is not much else to say about it really...
 
 ## How to get it:
-download [here|https://github.com/deviowa/tictactoe/archive/master.zip] 
+download [here](https://github.com/deviowa/tictactoe/archive/master.zip)
 
 or clone the repository:
 ```
