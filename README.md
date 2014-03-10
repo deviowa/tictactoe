@@ -5,7 +5,9 @@ A Tic Tac Toe Game created with Javascript.
 download here[https://github.com/deviowa/tictactoe/archive/master.zip] 
 
 or clone the repository:
-  git clone https://github.com/deviowa/tictactoe.git
+```
+git clone https://github.com/deviowa/tictactoe.git
+```
   
   
 ## How to run it
